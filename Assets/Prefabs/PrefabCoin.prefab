@@ -67,7 +67,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: b2840fab27f554a79ba96546b0e9472b, type: 3}
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::ItemCollectableBase
-  compareTag: Player
+  compareTag: CoinCollector
   particlePrefab: {fileID: 0}
   timeToHide: 0
   graphicItem: {fileID: 943848309576886858}

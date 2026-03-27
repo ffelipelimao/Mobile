@@ -21,27 +21,37 @@ public class ItemCollectableBase : MonoBehaviour
     {
         if (graphicItem != null)
         {
-            graphicItem.SetActive(false);   
+            graphicItem.SetActive(false);
         }
         Invoke("HideObject", timeToHide);
         OnCollect();
     }
 
-    private void HideObject(){
+    private void HideObject()
+    {
         gameObject.SetActive(false);
+    }
+
+    protected virtual void HideItens()
+    {
+        if (graphicItem != null)
+        {
+            graphicItem.SetActive(false);
+        }
+        Invoke("HideObject", timeToHide);
     }
 
     protected virtual void OnCollect()
     {
         if (particlePrefab != null)
         {
-        ParticleSystem particle = Instantiate(
-            particlePrefab,
-            transform.position,
-            Quaternion.identity
-        );
+            ParticleSystem particle = Instantiate(
+                particlePrefab,
+                transform.position,
+                Quaternion.identity
+            );
 
-        particle.Play();
+            particle.Play();
         }
 
         if (audioSource != null)

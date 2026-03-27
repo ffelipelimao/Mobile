@@ -1,5 +1,7 @@
 using Core;
+using TMPro;
 using UnityEngine;
+using DG.Tweening;
 
 public class PlayerController : Singleton<PlayerController>
 {
@@ -16,6 +18,10 @@ public class PlayerController : Singleton<PlayerController>
     private Vector3 _startPosition;
 
     public bool invincible = false;
+
+    public TextMeshPro uiPowerUpText;
+    [Header("Coin Collector")]
+    public GameObject coinCollector;
 
     private void Start()
     {
@@ -64,7 +70,7 @@ public class PlayerController : Singleton<PlayerController>
 
     public void SetPowerUpText(string s)
     {
-        //uiTextPowerUp.text = s;
+        uiPowerUpText.text = s;
     }
     public void PowerUpSpeedUp(float f)
     {
@@ -78,5 +84,20 @@ public class PlayerController : Singleton<PlayerController>
     public void SetInvincible(bool b)
     {
         invincible = b;
+    }
+
+    public void ChangeHeight(float amount, float duration, float animationDuration, Ease ease)
+    {
+        transform.DOMoveY(_startPosition.y + amount, animationDuration).SetEase(ease);
+    }
+
+    public void ResetHeight()
+    {
+        transform.DOMoveY(_startPosition.y, .1f);
+    }
+
+    public void ChangeCoinCollectorSize(float amount)
+    {
+        coinCollector.transform.localScale = Vector3.one * amount;
     }
 }
