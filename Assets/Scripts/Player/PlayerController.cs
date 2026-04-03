@@ -23,6 +23,10 @@ public class PlayerController : Singleton<PlayerController>
     [Header("Coin Collector")]
     public GameObject coinCollector;
 
+    public AnimationManager animationManager;
+
+    private float baseSpeedAnimation = 7;
+
     private void Start()
     {
         _startPosition = transform.position;
@@ -45,8 +49,18 @@ public class PlayerController : Singleton<PlayerController>
     {
         if (collision.transform.CompareTag(enemyTag))
         {
-            if (!invincible) EndGame();
+            if (!invincible)
+            {
+                EndGame(AnimationManager.AnimationType.DEATH);
+                MoveBack();
+            }
         }
+    }
+
+    void MoveBack()
+    {
+        // will set -1 position behind
+        transform.DOMoveZ(-1f, .3f).SetRelative();
     }
 
     void OnTriggerEnter(Collider other)
@@ -57,15 +71,17 @@ public class PlayerController : Singleton<PlayerController>
         }
     }
 
-    void EndGame()
+    void EndGame(AnimationManager.AnimationType at = AnimationManager.AnimationType.IDLE)
     {
         _canRun = false;
         endScreen.SetActive(true);
+        animationManager.Play(at);
     }
 
     public void StartRun()
     {
         _canRun = true;
+        animationManager.Play(AnimationManager.AnimationType.RUN, _currentSpeed / baseSpeedAnimation);
     }
 
     public void SetPowerUpText(string s)

@@ -13,31 +13,16 @@ public class AnimationManager : MonoBehaviour
         DEATH
     }
 
-    public void Play(AnimationType type)
+    public void Play(AnimationType type, float currentSpeedFactor = 1)
     {
         animatorSetups.ForEach(i =>
         {
             if (i.type == type)
             {
                 animator.SetTrigger(i.trigger);
+                animator.speed = i.speed * currentSpeedFactor;
             }
         });
-    }
-
-    void Update()
-    {
-        if (Input.GetKeyDown(KeyCode.Alpha1))
-        {
-            Play(AnimationType.RUN);
-        }
-        else if (Input.GetKeyDown(KeyCode.Alpha2))
-        {
-            Play(AnimationType.IDLE);
-        }
-        else if (Input.GetKeyDown(KeyCode.Alpha3))
-        {
-            Play(AnimationType.DEATH);
-        }
     }
 }
 
@@ -46,4 +31,5 @@ public class AnimationSetup
 {
     public AnimationManager.AnimationType type;
     public string trigger;
+    public float speed = 1f;
 }
