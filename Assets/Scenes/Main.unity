@@ -2158,6 +2158,17 @@ MonoBehaviour:
   levels:
   - {fileID: 4757478892866150915, guid: d53cd3bfbb56c4151892910938d6d6df, type: 3}
   - {fileID: 4757478892866150915, guid: a0ba8ec2f988046b2b53bfdc9d698ee6, type: 3}
+  levelPieces:
+  - {fileID: 4475477136008993332, guid: e75fe2f9653e548f08657dfc583fdabf, type: 3}
+  - {fileID: 4566045802082524575, guid: cd15b814c0a724cc1a63837ba6ff2bcc, type: 3}
+  levelPiecesStart:
+  - {fileID: 4475477136008993332, guid: e19d0db0eee5b45ba9d0a30864f8e390, type: 3}
+  levelPiecesEnd:
+  - {fileID: 4475477136008993332, guid: 08bd450b9cae04d7daab7841b3c5ef9a, type: 3}
+  piecesNumber: 5
+  piecesNumberStart: 2
+  piecesNumberEnd: 1
+  timeToPieces: 0.3
   _index: 1
 --- !u!4 &1705010414
 Transform:
