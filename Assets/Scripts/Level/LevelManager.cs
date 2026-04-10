@@ -5,18 +5,14 @@ using UnityEngine;
 public class LevelManager : MonoBehaviour
 {
     public Transform container;
-    public List<GameObject> levels;
 
-    [Header("Pieces")]
-    public List<LevelPieceBase> levelPieces;
-    public List<LevelPieceBase> levelPiecesStart;
-    public List<LevelPieceBase> levelPiecesEnd;
-    public int piecesNumber = 5;
-    public int piecesNumberStart = 2;
-    public int piecesNumberEnd = 2;
+
+    public List<LevelSectionsBasedSetup> levelSectionsBasedSetups;
+    private LevelSectionsBasedSetup _currSetup;
     public float timeToPieces = 0.3f;
 
-    private List<LevelPieceBase> _spawnedPieces;
+
+    private List<LevelPieceBase> _spawnedPieces = new();
     [SerializeField] private int _index;
     private GameObject _currentLevel;
 
@@ -26,38 +22,49 @@ public class LevelManager : MonoBehaviour
         CreateLevel();
     }
 
-    void CreateLevel()
+    // Update to Debug
+    void Update()
     {
-        _spawnedPieces = new List<LevelPieceBase>();
-        for (int i = 0; i < piecesNumberStart; i++)
+        if (Input.GetKeyDown(KeyCode.D))
         {
-            CreateLevelPiece(levelPiecesStart);
-        }
+            CreateLevel();
 
-        for (int i = 0; i < piecesNumber; i++)
-        {
-            CreateLevelPiece(levelPieces);
         }
-        for (int i = 0; i < piecesNumberEnd; i++)
-        {
-            CreateLevelPiece(levelPiecesEnd);
-        }
-
-        //StartCoroutine(CreateLevelCoroutine());
     }
 
-    void CreateLevelPiece()
+    void CreateLevel()
     {
-        var piece = levelPieces[Random.Range(0, levelPieces.Count)];
-        var spawnedPiece = Instantiate(piece, container);
+        ClearSpawnedPieces();
 
-        if (_spawnedPieces.Count > 0)
+        if (_currSetup != null)
         {
-            var lastPiece = _spawnedPieces[_spawnedPieces.Count - 1];
-            spawnedPiece.transform.position = lastPiece.endPiece.position;
+            _index++;
+            if (_index >= levelSectionsBasedSetups.Count)
+            {
+                _index = 0;
+            }
         }
 
-        _spawnedPieces.Add(spawnedPiece);
+        Debug.Log(_index);
+
+        _currSetup = levelSectionsBasedSetups[_index];
+
+        for (int i = 0; i < _currSetup.piecesNumberStart; i++)
+        {
+            CreateLevelPiece(_currSetup.levelPiecesStart);
+        }
+
+        for (int i = 0; i < _currSetup.piecesNumber; i++)
+        {
+            CreateLevelPiece(_currSetup.levelPieces);
+        }
+        for (int i = 0; i < _currSetup.piecesNumberEnd; i++)
+        {
+            CreateLevelPiece(_currSetup.levelPiecesEnd);
+        }
+
+        ColorManager.Instance.ChangeColorByType(_currSetup.artType);
+        //StartCoroutine(CreateLevelCoroutine());
     }
 
     void CreateLevelPiece(List<LevelPieceBase> list)
@@ -71,20 +78,37 @@ public class LevelManager : MonoBehaviour
             spawnedPiece.transform.position = lastPiece.endPiece.position;
         }
 
+        foreach (var p in spawnedPiece.GetComponentsInChildren<ArtPiece>())
+        {
+            p.ChangePiece(ArtManager.Instance.GetSetupByType(_currSetup.artType).gameObject);
+        }
+
         _spawnedPieces.Add(spawnedPiece);
+    }
+
+
+    private void ClearSpawnedPieces()
+    {
+        // TODO try use while
+        for (int i = _spawnedPieces.Count - 1; i >= 0; i--)
+        {
+            Destroy(_spawnedPieces[i].gameObject);
+        }
+
+        _spawnedPieces.Clear();
     }
 
     IEnumerator CreateLevelCoroutine()
     {
         _spawnedPieces = new List<LevelPieceBase>();
-        for (int i = 0; i < piecesNumber; i++)
+        for (int i = 0; i < _currSetup.piecesNumber; i++)
         {
-            CreateLevelPiece();
+            CreateLevelPiece(_currSetup.levelPieces);
             yield return new WaitForSeconds(timeToPieces);
         }
     }
 
-    void SpawnNextLevel()
+    /*void SpawnNextLevel()
     {
         if (_currentLevel != null)
         {
@@ -98,4 +122,5 @@ public class LevelManager : MonoBehaviour
         _currentLevel = Instantiate(levels[_index], container);
         _currentLevel.transform.localPosition = Vector3.zero;
     }
+    */
 }

@@ -26,7 +26,7 @@ RenderSettings:
   m_AmbientIntensity: 1
   m_AmbientMode: 0
   m_SubtractiveShadowColor: {r: 0.42, g: 0.478, b: 0.627, a: 1}
-  m_SkyboxMaterial: {fileID: 10304, guid: 0000000000000000f000000000000000, type: 0}
+  m_SkyboxMaterial: {fileID: 2100000, guid: d8372b7d7c5334cdaa4365890b097c93, type: 2}
   m_HaloStrength: 0.5
   m_FlareStrength: 1
   m_FlareFadeSpeed: 3
@@ -119,6 +119,55 @@ NavMeshSettings:
     debug:
       m_Flags: 0
   m_NavMeshData: {fileID: 0}
+--- !u!1 &111745836
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 111745838}
+  - component: {fileID: 111745837}
+  m_Layer: 0
+  m_Name: ArtManager
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!114 &111745837
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 111745836}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 9ea343b8d85af4ca5bb4a113ec1f7bb0, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: Assembly-CSharp::ArtManager
+  artSetups:
+  - artType: 0
+    gameObject: {fileID: 4856286584274118228, guid: 91662e50b0cc941c9a94c5ed2bf2e427, type: 3}
+  - artType: 1
+    gameObject: {fileID: 4856286584274118228, guid: f0914d29dea7e491abcae2b8b89f70bc, type: 3}
+--- !u!4 &111745838
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 111745836}
+  serializedVersion: 2
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: 8.7, y: 1.67, z: -5.63221}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_ConstrainProportionsScale: 0
+  m_Children: []
+  m_Father: {fileID: 0}
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1 &123610199
 GameObject:
   m_ObjectHideFlags: 0
@@ -1497,6 +1546,62 @@ MonoBehaviour:
   m_EditorClassIdentifier: Assembly-CSharp::TouchController
   pastPosition: {x: 0, y: 0}
   velocity: 1
+--- !u!1 &1271481082
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 1271481084}
+  - component: {fileID: 1271481083}
+  m_Layer: 0
+  m_Name: ColorManager
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!114 &1271481083
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1271481082}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: e0152358e744d4132a939fedf7724c49, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: Assembly-CSharp::ColorManager
+  materials:
+  - {fileID: 2100000, guid: a7f69e622496342b7a460caf7045eebe, type: 2}
+  - {fileID: 2100000, guid: 58282ff6d035c4c9186edf198f4f049b, type: 2}
+  colorsSetup:
+  - artType: 0
+    colors:
+    - {r: 0.7278113, g: 0.990566, b: 0.28502133, a: 0}
+    - {r: 0.9528302, g: 0.5887772, b: 0.9097605, a: 0}
+  - artType: 1
+    colors:
+    - {r: 0.81506664, g: 0.990566, b: 0.0046724924, a: 0}
+    - {r: 0.9529412, g: 0.5882353, b: 0.6823212, a: 0}
+--- !u!4 &1271481084
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1271481082}
+  serializedVersion: 2
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: 1.47156, y: 0, z: -5.63221}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_ConstrainProportionsScale: 0
+  m_Children: []
+  m_Father: {fileID: 0}
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1 &1339568714
 GameObject:
   m_ObjectHideFlags: 0
@@ -2155,19 +2260,9 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::LevelManager
   container: {fileID: 539136689}
-  levels:
-  - {fileID: 4757478892866150915, guid: d53cd3bfbb56c4151892910938d6d6df, type: 3}
-  - {fileID: 4757478892866150915, guid: a0ba8ec2f988046b2b53bfdc9d698ee6, type: 3}
-  levelPieces:
-  - {fileID: 4475477136008993332, guid: e75fe2f9653e548f08657dfc583fdabf, type: 3}
-  - {fileID: 4566045802082524575, guid: cd15b814c0a724cc1a63837ba6ff2bcc, type: 3}
-  levelPiecesStart:
-  - {fileID: 4475477136008993332, guid: e19d0db0eee5b45ba9d0a30864f8e390, type: 3}
-  levelPiecesEnd:
-  - {fileID: 4475477136008993332, guid: 08bd450b9cae04d7daab7841b3c5ef9a, type: 3}
-  piecesNumber: 5
-  piecesNumberStart: 2
-  piecesNumberEnd: 1
+  levelSectionsBasedSetups:
+  - {fileID: 11400000, guid: f1828f5df5da94137b209b297c959005, type: 2}
+  - {fileID: 11400000, guid: 6c602d46bb14646abb96f8fbccd7922b, type: 2}
   timeToPieces: 0.3
   _index: 1
 --- !u!4 &1705010414
@@ -2503,3 +2598,5 @@ SceneRoots:
   - {fileID: 1674167461799581217}
   - {fileID: 6873244395422460852}
   - {fileID: 1705010414}
+  - {fileID: 111745838}
+  - {fileID: 1271481084}
