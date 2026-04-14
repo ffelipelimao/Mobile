@@ -12,7 +12,7 @@ public class ColorManager : Singleton<ColorManager>
         var setup = colorsSetup.Find(i => i.artType == artType);
         for (int i = 0; i < materials.Count; i++)
         {
-            materials[i].SetColor("_Color", setup.colors[i]);
+            materials[i].SetColor("_BaseColor", setup.colors[i]);
         }
     }
 }

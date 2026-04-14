@@ -12,6 +12,7 @@ GameObject:
   - component: {fileID: 7851436394458202809}
   - component: {fileID: 6580473500197037880}
   - component: {fileID: 6527387502211183928}
+  - component: {fileID: 13}
   m_Layer: 0
   m_Name: PrefabEnemy
   m_TagString: Enemy
@@ -111,3 +112,19 @@ BoxCollider:
   serializedVersion: 3
   m_Size: {x: 1, y: 1, z: 1}
   m_Center: {x: 0, y: 0, z: 0}
+--- !u!114 &13
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1502906689164035166}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 3025bba527b58482abe880a78cd8bc7d, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: Assembly-CSharp::MovementHelper
+  positions:
+  - {fileID: 0}
+  - {fileID: 0}
+  duration: 1
