@@ -10,7 +10,7 @@ GameObject:
   m_Component:
   - component: {fileID: 855261477779856900}
   - component: {fileID: 6080008121590724198}
-  - component: {fileID: 2792128747150543968}
+  - component: {fileID: 6535444230251295517}
   m_Layer: 0
   m_Name: PrefabCoin
   m_TagString: Untagged
@@ -55,7 +55,7 @@ SphereCollider:
   serializedVersion: 3
   m_Radius: 0.71926033
   m_Center: {x: 0, y: 0.05186391, z: -0.16739643}
---- !u!114 &2792128747150543968
+--- !u!114 &6535444230251295517
 MonoBehaviour:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
@@ -64,14 +64,18 @@ MonoBehaviour:
   m_GameObject: {fileID: 392243712203044464}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: b2840fab27f554a79ba96546b0e9472b, type: 3}
+  m_Script: {fileID: 11500000, guid: 1544880c44f3a4c88bed7b1a5e03449f, type: 3}
   m_Name: 
-  m_EditorClassIdentifier: Assembly-CSharp::ItemCollectableBase
-  compareTag: CoinCollector
+  m_EditorClassIdentifier: Assembly-CSharp::ItemCollactableCoin
+  compareTag: Player
   particlePrefab: {fileID: 0}
-  timeToHide: 0
-  graphicItem: {fileID: 943848309576886858}
+  timeToHide: 6
+  graphicItem: {fileID: 0}
   audioSource: {fileID: 0}
+  coll: {fileID: 6080008121590724198}
+  collect: 0
+  lerp: 5
+  minDistance: 1
 --- !u!1 &943848309576886858
 GameObject:
   m_ObjectHideFlags: 0

@@ -1,6 +1,7 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using DG.Tweening;
 
 public class LevelManager : MonoBehaviour
 {
@@ -15,6 +16,11 @@ public class LevelManager : MonoBehaviour
     private List<LevelPieceBase> _spawnedPieces = new();
     [SerializeField] private int _index;
     private GameObject _currentLevel;
+
+
+    public float scaleDuration = 0.2f;
+    public float timeBetweenPieces = 0.1f;
+    public Ease ease = Ease.OutBack;
 
     void Awake()
     {
@@ -64,6 +70,7 @@ public class LevelManager : MonoBehaviour
         }
 
         ColorManager.Instance.ChangeColorByType(_currSetup.artType);
+        StartCoroutine(ScalePiecesByTime());
         //StartCoroutine(CreateLevelCoroutine());
     }
 
@@ -106,6 +113,24 @@ public class LevelManager : MonoBehaviour
             CreateLevelPiece(_currSetup.levelPieces);
             yield return new WaitForSeconds(timeToPieces);
         }
+    }
+    IEnumerator ScalePiecesByTime()
+    {
+        foreach (var p in _spawnedPieces)
+        {
+            p.transform.localScale = Vector3.zero;
+        }
+
+        // wait a frame
+        yield return null;
+
+        for (int i = 0; i < _spawnedPieces.Count; i++)
+        {
+            _spawnedPieces[i].transform.DOScale(1, scaleDuration).SetEase(ease);
+            yield return new WaitForSeconds(timeBetweenPieces);
+        }
+
+        CoinAnimationManager.Instance.StartAnimations();
     }
 
     /*void SpawnNextLevel()

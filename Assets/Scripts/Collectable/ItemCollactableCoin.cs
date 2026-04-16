@@ -9,7 +9,7 @@ public class ItemCollactableCoin : ItemCollectableBase
 
     private void Start()
     {
-        //CoinManager.Instance.RegisterCoin(this);
+        CoinAnimationManager.Instance.RegisterCoin(this);
     }
 
     protected override void OnCollect()
