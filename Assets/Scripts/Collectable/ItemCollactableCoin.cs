@@ -17,7 +17,7 @@ public class ItemCollactableCoin : ItemCollectableBase
         base.OnCollect();
         coll.enabled = false;
         collect = true;
-        //PlayerController.Instance.Bounce();
+        PlayerController.Instance.Bounce();
     }
 
     protected override void Collect()

@@ -27,6 +27,8 @@ public class PlayerController : Singleton<PlayerController>
 
     private float baseSpeedAnimation = 7;
 
+    [SerializeField] private BouncerHelper bouncerHelper;
+
     private void Start()
     {
         _startPosition = transform.position;
@@ -115,5 +117,11 @@ public class PlayerController : Singleton<PlayerController>
     public void ChangeCoinCollectorSize(float amount)
     {
         coinCollector.transform.localScale = Vector3.one * amount;
+    }
+
+    public void Bounce()
+    {
+        if (bouncerHelper != null)
+            bouncerHelper.Bounce();
     }
 }

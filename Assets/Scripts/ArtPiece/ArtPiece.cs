@@ -9,8 +9,9 @@ public class ArtPiece : MonoBehaviour
     {
         if (currentArt != null)
         {
-            currentArt = Instantiate(piece, transform);
-            currentArt.transform.localPosition = Vector3.zero;
+            Destroy(currentArt);
         }
+        currentArt = Instantiate(piece, transform);
+        currentArt.transform.localPosition = Vector3.zero;
     }
 }
