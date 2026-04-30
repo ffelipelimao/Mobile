@@ -25,6 +25,10 @@ public class PlayerController : Singleton<PlayerController>
 
     public AnimationManager animationManager;
 
+    public ParticleSystem vfxDeath;
+
+    public float limit = 4;
+
     private float baseSpeedAnimation = 7;
 
     [SerializeField] private BouncerHelper bouncerHelper;
@@ -42,6 +46,16 @@ public class PlayerController : Singleton<PlayerController>
         _pos = target.position;
         _pos.y = transform.position.y;
         _pos.z = transform.position.z;
+
+        //delimitando o player para andar em um limite
+        if (_pos.x < -limit)
+        {
+            _pos.x = -limit;
+        }
+        else if (_pos.x > limit)
+        {
+            _pos.x = limit;
+        }
 
         transform.position = Vector3.Lerp(transform.position, _pos, lerpSpeed * Time.deltaTime);
         transform.Translate(transform.forward * _currentSpeed * Time.deltaTime);
@@ -78,6 +92,10 @@ public class PlayerController : Singleton<PlayerController>
         _canRun = false;
         endScreen.SetActive(true);
         animationManager.Play(at);
+        if (vfxDeath != null)
+        {
+            vfxDeath.Play();
+        }
     }
 
     public void StartRun()
